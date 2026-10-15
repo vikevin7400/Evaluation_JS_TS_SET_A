@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    CustomerName: 
+    <input type="text" name="name" id="name">
+    <br>
+    Email:
+    <input type="email" name="email" id="email">
+    <br>
+    Password:
+    <input type="password" name="pass" id="pass">
+    
+    <br>
+    <button type="submit" id="b1">Submit</button>
+    <script>
+        const b1 = document.getElementById("b1")
+
+        b1.addEventListener("click",()=>{
+            const name = document.getElementById("name").value.trim()
+            const pass = document.getElementById("pass").value
+            
+            const email = document.getElementById("email").value.trim()
+            const namReg = /^[A-Za-z\s]{3,}$/;
+            const passReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if ( name === "" || !namReg.test(name)) {
+                alert("enter valid format!!!");
+                
+            } 
+            else if (pass ==="" || !passReg.test(pass)) {
+                    alert("Password must be at least 8 characters long and contain both letters and numbers!")
+                
+            }
+            
+            else if (emailReg.test(email)) {
+                alert("please enter valid email address")
+            }
+            else {
+                localStorage.setItem("name",name);
+                localStorage.setItem("email",email);
+                alert("registration sucessful")
+
+                
+            }
+            
+        })
+
+    </script>
+
+</body>
+</html>
